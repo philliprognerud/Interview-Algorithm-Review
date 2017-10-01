@@ -20,7 +20,7 @@ def pair_sum(array, targetVal):
   minVal = 0
   counter = 0
 
-  #O(n) loop + O(1) look up time
+  #O(n) loop
   for key in array:
     if maxVal < key:
       maxVal = key
@@ -38,7 +38,8 @@ def pair_sum(array, targetVal):
     lowVal = x
     highVal = targetVal - x
 
-    if lowVal in dict and highVal in dict:
+    #O(1) look up time for .get()
+    if dict.get(lowVal, False) and dict.get(highVal, False):
       if dict[lowVal] >= 1 and dict[highVal] >= 1:
         counter += 1
 
