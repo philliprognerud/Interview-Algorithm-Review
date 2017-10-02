@@ -5,18 +5,20 @@
 
 
 def sum(arr1):
-  d1 = {}
-  sums = 0
 
-  for i, x in enumerate(arr1):
-    if len(d1) > 0:
-      sums += x
-      d1[i] = sums
-    else:
-      d1[i] = x
-      sums = x
+  current_sum = max_sum = arr1[0]
 
-  print(d1)
+  if len(arr1) == 0:
+    return 0
+
+  if len(arr1) == 1:
+    return arr1[0]
+
+  for elem in arr1[1:]:
+    current_sum = max(current_sum + elem, elem)
+    max_sum = max(current_sum, max_sum)
+
+  return max_sum
 
 
-sum([1, 2, -1, 4, 3, -1])
+print(sum([1, 2, -1, 4, 3, -1]))
